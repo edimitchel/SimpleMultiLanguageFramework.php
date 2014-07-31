@@ -12,9 +12,10 @@
 	</head>
 	<body<?php if(Core::getIdPage() !== "_home") echo " class=\"small-header\""; ?>>
 		<header id="header">
+			<?php $menu = $this->getMenuTitles(); ?>
 			<div id="logo"<?php 
 						if(Core::getIdPage() == "_home") echo " class=\"active\"";
-					?>><a href="<?=ROOT_PATH?>/"><?=$this->getMenuTitles()[$this->getSiteLang()]['_home']?></a></div>
+					?>><a href="<?=ROOT_PATH?>/"><?=$menu[$this->getSiteLang()]['_home']?></a></div>
 			<div id="langSwitcher">
 				<div data-lang="<?=$this->getSiteLang()?>" class="lang"><?=Core::$LANGNAME[$this->getSiteLang()]?></div>
 				<?php foreach(Core::$LANGS AS $i => $lang): if($this->getSiteLang() != $lang):?>
@@ -23,7 +24,7 @@
 			</div>
 			<nav>
 				<ul>
-<?php $menuList = $this->getMenuTitles()[$this->getSiteLang()]; foreach ($menuList as $id => $mTitle): 
+<?php $menuList = $menu[$this->getSiteLang()]; foreach ($menuList as $id => $mTitle): 
 	if(strpos($id, "_") === false): ?>
 					<li<?php 
 						if(Core::getIdPage() == $id) echo " class=\"active\"";

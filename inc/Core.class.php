@@ -7,7 +7,7 @@ class Core
 {
 	public static $Instance = false;
 
-	public static $LANGS = ['eng','fra'];
+	public static $LANGS = array('eng','fra');
 	public static $DEFAULTLANG = "eng";
 
 	public static $LANGNAME = array(
@@ -165,7 +165,7 @@ class Core
 			);
 			if($langOri !== $this->getSiteLang()){
 				// Page language undefined: we send the new menu of default language
-				$object->menu = $this->getMenuTitles()[$this->getSiteLang()];
+				array_push($object->menu = $this->getMenuTitles(),$this->getSiteLang());
 			}
 			echo json_encode($object, false);
 		return;
